@@ -381,6 +381,7 @@ main {
     text-decoration : none;
     font-size: 1.5em; 
     font-weight: 300;
+    height: 2.5em;
 }
 
 p.code {
