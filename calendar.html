@@ -8,6 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="css/demo.css">
         <link rel="stylesheet" type="text/css" href="css/skeleton.css">
         <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+        <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -21,7 +22,7 @@
         <br><br>
             <div class="two columns"></div>
             <div class="eight columns">
-                <h5 class="subtitle">Frequency of the hashtag #glossier from 2009 to 2017</h5>
+                <div class="subtitle-block">Frequency of the hashtag #glossier from 2009 to 2017</div>
                 <p>We analyzed twitter activity over time surrounding the hashtag #glossier. There is an apparent outlier on October, 9, 2017. Upon further investigation, this date was Glossier’s launch into the UK market, which was accompanied by a frenzy of activity related to the brand on Twitter.
                 </p>
                                 <script>
@@ -32,7 +33,7 @@
                 var color = d3.scaleQuantize()
                     .domain([8, 143])
                     .range(['#c6dbef','#9ecae1','#6baed6','#3182bd','#08519c']);
-
+                                    
                 var svg = d3.select("body")
                     .selectAll("svg")
                     .data(d3.range(2009, 2018))
@@ -48,7 +49,7 @@
                     .attr("font-size", 10)
                     .attr("text-anchor", "middle")
                     .text(function(d) { return d; });
-
+                                    
                 var rect = svg.append("g")
                     .attr("fill", "none")
                     .attr("stroke", "#ccc")
@@ -60,7 +61,7 @@
                     .attr("x", function(d) { return d3.timeWeek.count(d3.timeYear(d), d) * cellSize; })
                     .attr("y", function(d) { return d.getDay() * cellSize; })
                     .datum(d3.timeFormat("%Y-%m-%d"));
-
+                                    
                 svg.append("g")
                     .attr("fill", "none")
                     .attr("stroke", "#000")
@@ -68,7 +69,8 @@
                     .data(function(d) { return d3.timeMonths(new Date(d, 0, 1), new Date(d + 1, 0, 1)); })
                     .enter().append("path")
                     .attr("d", pathMonth);
-
+                
+                                    
                 d3.csv("https://raw.githubusercontent.com/navi1218/INFX547Proj/master/Tweepy%20JSON/viz_hashtag_glossier.csv",
                        function(error, csv){
 
@@ -83,8 +85,10 @@
                         .attr("fill", function(d) { return color(data[d]); })
                         .append("title")
                         .text(function(d) { return data[d].n;});
+                         
                 });
 
+                                    
                 function pathMonth(t0) {
 
                     var t1 = new Date(t0.getFullYear(), t0.getMonth() + 1, 0),
