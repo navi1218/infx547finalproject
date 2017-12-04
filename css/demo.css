@@ -73,14 +73,12 @@ body {
 a {
 	text-decoration: none;
 	color: #F6A8B6;
-	color: var(--color-link);
 	outline: none;
 }
 
 a:hover,
 a:focus {
 	color: #423c2b;
-	color: var(--color-link-hover);
 	outline: none;
 }
 
@@ -196,10 +194,6 @@ main {
 	background-size: cover;
     overflow-y:scroll;
     overflow-x:hidden;
-}
-
-.demo-1 .content--fixed {
-	background-image: url(../img/bg1.jpg);
 }
 
 .content__inner {
@@ -363,6 +357,31 @@ h5.subtitle {
     font-weight: 100;
     background-color: #FFF0F5;
 }
+
+p.code {
+    font-family: monospace;   
+}
+
+.full-width-container {
+    width: 100%;
+    max-width: 100%;
+    clear: both;
+    margin: 0 auto;
+}
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    width: inherit;
+    height: inherit;
+    padding: 3px;
+    font-family: "Quicksand", sans-serif;
+    background: pink;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
 
 @media screen and (max-width: 50em) {
 	.frame {
