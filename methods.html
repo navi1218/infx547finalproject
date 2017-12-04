@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css">
+		<link rel="stylesheet" type="text/css" href="css/demo.css">
+        <link rel="stylesheet" type="text/css" href="css/skeleton.css">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700" rel="stylesheet">
+		<script>document.documentElement.className = 'js';</script>
+	</head>
+    <body>
+        <div class="content content--fixed">
+            <div id="mainheader" class="row">
+                <div class="two columns"></div>
+                <div class="eight columns">
+                <br><br>
+                <h5 class="subtitle">A Case Study on Glossier's Social Media Marketing Strategy</h5>
+                <h5>#Methods</h5>
+                    <u>Data Collection</u><br><br>
+<p>Using Python, we installed Tweepy and accessed Twitter’s REST API. The REST API was used instead of streaming because we needed to retrieve indexed and archived tweets, rather than tweets in real-time, as we were interested in popularity and sentiments over time. We mined for tweets directly related to the official Glossier Twitter account, including tweets posted by the company itself, Glossier's replies to public posts, Glossier's retweets, and public tweets that tagged the Glossier account; hashtags associated with Glossier, and text mining, not associated with any particular hashtag or account, of any and all tweets with Glossier-related words. The Glossier tweets range from September 2014 to November 2017, while hashtagged tweets range from 2012 to November 2017. These represent the entirety of tweets for Glossier and searched hashtags.</p>
+                    
+<p>The data was collected using two methods. The first is using Tweepy to scrape Twitter’s REST API for tweets and associated metadata. The second is using a python program GetOldTweets written by Jefferson Henrique on GitHub. This program accesses Twitter via the web browser and retrieves tweet information from the web page. The second method was used due to the limitation on retrieval period using the REST API, which limits to 7-10 days. Using GetOldTweets, we are able to directly access tweets so long as they are public and have not been deleted, no matter how old they are.</p>
+        <u>Data Cleaning</u><br><br>
+<p>The data was saved in both JSON and CSV format. JSON was used as the tweets retrieved via the REST API were automatically in JSON format. The GetOldTweets were retrieved first in JSON then saved in CSV format. For ease of use, we converted the JSON tweets to CSV using Python, for easier access and tweet indexing, as well as accessibility in other programs (like R and D3) without needing to reformat the data. However, some data in the JSON files failed to transfer correctly into the CSV format, in the form of missing columns; for these cases, we conducted the tweet analysis in JSON, which included all Tweet key values, as opposed to the CSV files that included only values which were accessible via web-scraping.</p>
+<p>The various aforementioned tweets are divided into the respective categories of  account-related tweets, hashtagged tweets, keyword-specific tweets, and user tweets. By covering multiple aspects of Glossier-related tweets, our team is able to tackle the research question from various perspectives, and thus create a comprehensive answer. Examples include using account-related tweets to determine how the company views itself, conducts itself, and how the public responds in turn. The hashtagged tweets determine folksonomy, popularity of certain topics, and what influences customer purchases and loyalty. Like hashtagged tweets, text and keyword-specific tweets help determine motivations for customer purchases and loyalty by analyzing user sentiments through neutral, negative, or positive words used, as well as whether words point towards an emphasis on product importance versus lifestyle importance, revealing the allure of Glossier for customers. </p>
+<p>The data was also cleaned using R. After the raw data had been converted into CSV format, it was loaded into RStudio and tidied according to statistical analysis standards. Data types were made more appropriate and subsets of the data were created into order to produce D3, web-based visualizations. </p>
+<hr>
+            </div>
+            <div class="two columns"></div>
+            </div>
+            <a class="next-link" href="analysis.html">Analysis →</a>
+            <a class="previous-link" href="index.html">← Research Question</a><br>
+        </div>
+	</body>
+</html>

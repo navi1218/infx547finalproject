@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>A Case Study on Glossier's Social Media Marketing Strategy</title>
+        <meta name="description" content="INFX 547 Final Project">
+        <meta name="author" content="Tiffany Chiu, Pranavi Midathada and Casey Pham">
+        <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script src="https://d3js.org/queue.v1.min.js"></script>
+        <link rel="stylesheet" href="css/demo.css">
+        <link rel="stylesheet" href="css/skeleton.css">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
+    </head>
+
+    <body>
+
+    <div name="title" class="row">
+        <br><br>
+            <div class="two columns"></div>
+            <div class="eight columns">
+                <h5 class="subtitle">Words associated with the hashtag #glossier from 2010 to 2017</h5>
+                <p>This visualization illustrates the frequency of words found in a textual analysis of tweets from 2010 to 2017 that include the hashtag #glossier. In order to produce appropriate values for this bubble chart, stop words (such as ‘the’, ‘and’, etc) were removed using the tidytext library, which includes the dataset ‘stop_words’. Words associated with less than 3 tweets were not included in these visualizations in order to preserve legibility and efficient browser loading times. 
+                </p><p>
+From these bubble charts, we gleaned that the most popular words/tweets surrounding the hashtag #glossier are promotional messages such as “Wanna get 10% off your #glossier order? Shop here!” which link to coupons on Glossier’s website. The vast amount of unique words did not have a high frequency (i.e. they only showed up as 1 occurrence in the dataset). These individual tweets are still very rich for sentiment analysis, since they contain more information about the culture surrounding Glossier and its brand.   </p>
+            </div>
+            <div class="two columns"></div>
+    </div>
+<center>
+    <svg width="960" height="960" font-family="sans-serif" font-size="10" text-anchor="middle">     
+        </svg>
+   
+        <script>
+        
+            var svg = d3.select("svg"),
+                width = +svg.attr("width"),
+                height = +svg.attr("height");
+
+            var format = d3.format(",d");
+            
+            var color = d3.scaleOrdinal(d3.schemeCategory20);
+
+
+            var pack = d3.pack()
+                .size([width, height])
+                .padding(1.5);
+ 
+            var div = d3.select("body").append("div")
+                .attr("class", "tooltip")
+                .style("opacity", 0);
+
+            d3.csv("https://raw.githubusercontent.com/navi1218/INFX547Proj/master/d3viz_wordcount_3ormore.csv", function(d) {
+              d.n = +d.n;
+              if (d.n) return d;
+            }, function(error, classes) {
+              if (error) throw error;
+
+              var root = d3.hierarchy({children: classes})
+                  .sum(function(d) { return d.n; })
+                  .each(function(d) {
+                    if (id = d.data.word) {
+                      var id, i = id.lastIndexOf(".");
+                      d.id = id;
+                      d.package = id.slice(0, i);
+                      d.class = id.slice(i + 1);
+                    }
+                  });
+
+              var node = svg.selectAll(".node")
+                .data(pack(root).leaves())
+                .enter().append("g")
+                  .attr("class", "node")
+                  .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+                .on("mouseover", function(d) {
+                        div.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                        div.html("<b>"+d.data.word+"</b>" + "<br/> count: " + d.data.n)
+                        .style("left", (d3.event.pageX) + "px")
+                        .style("top", (d3.event.pageY - 28) + "px");
+                        })
+                .on("mouseout", function(d) {
+                        div.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                    });
+
+              node.append("circle")
+                  .attr("id", function(d) { return d.id; })
+                  .attr("r", function(d) { return d.r; })
+                  .style("fill", function(d) {return color(d.package); });
+    
+
+              node.append("clipPath")
+                  .attr("id", function(d) { return "clip-" + d.id; })
+                .append("use")
+                  .attr("xlink:href", function(d) { return "#" + d.id; });
+
+              node.append("text")
+                  .attr("clip-path", function(d) { return "url(#clip-" + d.id + ")"; })
+                .selectAll("tspan")
+                .data(function(d) { return d.class.split(/(?=[A-Z][^A-Z])/g); })
+                .enter().append("tspan")
+                  .attr("x", 0)
+                  .attr("y", function(d, i, nodes) { return 13 + (i - nodes.length / 2 - 0.5) * 10; })
+                  .text(function(d) { return d; });
+
+              node.append("text")
+                  .text(function(d) { return d.word + "\n" + d.n; });
+                
+            });
+</script>
+    </body>
