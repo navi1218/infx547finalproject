@@ -14,6 +14,11 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+p {
+    padding:0.5em;
+    text-align:justify;
+}
+
 /* Color schemes */
 .demo-1 { 
 	--color-text: #222;
@@ -351,11 +356,31 @@ main {
 	color: var(--color-next-hover);
 }
 
-h5.subtitle {
+
+.subtitle-block {
     color:#222;
     text-decoration : none;
-    font-weight: 100;
-    background-color: #FFF0F5;
+    background-color: #fbd6e0;
+    padding-top:0.5em;
+    padding-left: 1em;
+    padding-bottom:0.5em;
+    position:relative;
+    font-size: 1.2em; 
+    font-weight: 300;
+}
+
+.title-block {
+    padding-top:0.5em;
+    padding-left: 1em;
+    padding-bottom: 0.5em;
+    background-image: url('/website/img/anna-sastre-3401.jpg');
+    background-size: 60em;
+    background-position-y: 0;
+    background-position-x: right;
+    color:#222;
+    text-decoration : none;
+    font-size: 1.5em; 
+    font-weight: 300;
 }
 
 p.code {
