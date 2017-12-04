@@ -3,57 +3,39 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" href="favicon.ico">
-		<link href="https://fonts.googleapis.com/css?family=Nunito:400,700|Spectral:200" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
-		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/normalize.css">
+		<link rel="stylesheet" type="text/css" href="css/demo.css">
         <link rel="stylesheet" type="text/css" href="css/skeleton.css">
         <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700" rel="stylesheet">
 		<script>document.documentElement.className = 'js';</script>
 	</head>
-    
-	<body class="demo-1 loading">
-		<main>
-			<div class="content content--intro">
-				<div class="content__inner">
-					<h2 class="content__title">INFX 547: Social Media Analysis - Final Project</h2><br>
-					<h3 class="content__subtitle">How a Beauty and Skin Care Digital Startup 
-Took Social Media by Storm</h3>
-					<a href="#" class="enter">enter</a>
-				</div>
-				<div class="shape-wrap">
-					<svg class="shape" width="100%" height="100vh" preserveAspectRatio="none" viewBox="0 0 1440 800" xmlns:pathdata="http://www.codrops.com/">
-						<path d="M -44,-50 C -52.71,28.52 15.86,8.186 184,14.69 383.3,22.39 462.5,12.58 638,14 835.5,15.6 987,6.4 1194,13.86 1661,30.68 1652,-36.74 1582,-140.1 1512,-243.5 15.88,-589.5 -44,-50 Z" pathdata:id="M -44,-50 C -137.1,117.4 67.86,445.5 236,452 435.3,459.7 500.5,242.6 676,244 873.5,245.6 957,522.4 1154,594 1593,753.7 1793,226.3 1582,-126 1371,-478.3 219.8,-524.2 -44,-50 Z"></path>
-					</svg>
-				</div>
-			</div><!-- /content -->
-			<div class="content content--fixed">
-                <div id="mainheader" class="row">
-                    <div class="two columns"></div>
-                    <div class="eight columns">
-                        <br><br>
-                        <h5 class="subtitle">A Case Study on Glossier's Social Media Marketing Strategy</h5>
-                        <h5>#Research Question</h5>
-                        <p>A 2014 internet-born beauty startup, Glossier has met with tremendous success by raising over $35 million in funding, carrying over 22 products, boasting 805,000 Instagram and 46,000 Twitter followers, and now expanding into international and brick-and-mortar domains (Wischhover). A cult-like following emerged and iconic hashtags have popped up due to Glossier's "real girl," "effortless minimal makeup," and "simple coolness" concepts, among many others (Tiku). On top of this, Glossier had 30,000 people on a combined product waitlist as well as customers lining up to become social media product reps and to be featured on the company blog (Tiku; Wischhover). 
-<br><br>
-How has Glossier been able to see such tremendous growth for a cosmetics e-commerce site in just a few years? Based on articles featuring interviews with both Glossier's CEO and social media gurus, it seems that social media mastery holds the key to the answer (Giacobbe 2017). 
-<br><img height="80%" width="80%" src="http://keyassets-p2.timeincuk.net/wp/prod/wp-content/uploads/sites/57/2017/04/glossier-920x690.jpg"><br>
-Intrigued by the fast-paced and continuing rise of Glossier's success, our team defined a research question centered around this achievement: what are the defining factors that led to and carries on Glossier’s success in sales, popularity, and reach, in the social media realm?
-<br><br>
-Guided by our research question, we hoped to uncover tactics and characteristics that explain the popularity of Glossier – especially as a company with roots in the digital startup realm – and determine whether the reputation and following are influenced more by the products offered or lifestyle promoted, or perhaps something else altogether. The three components of success we listed out above are inextricably linked and we believe the insights we obtain will help us identify impactful business and marketing strategies (specifically in the social media domain) for other beauty retailers, startups, e-commerce companies, or like Glossier, a combination of all these.
+    <body>
+        <div class="content content--fixed">
+            <div id="mainheader" class="row">
+                <div class="two columns"></div>
+                <div class="eight columns">
+                <br><br>
+                <h5 class="subtitle">A Case Study on Glossier's Social Media Marketing Strategy</h5>
+                <h5>#Limitations and Ethical Issues</h5>
+                    <p>In obtaining data, there are a few limitations to our approach. The first is the use of the REST API. While able to retroactively retrieve tweets and all data associated with them, such as text, favorites, retweets, user, profile color, etc., the API is limited to retrieval within 7-10 days. Reason being Twitter does not keep tweets indexed past this time for free users. A paid premium license would allow for retrieval of all tweets without limit. 
+                    </p><p>
+Our second limitation is using web-scraping to retrieve tweets. This method is able to retrieve all tweets so long as they are public and available, that is, so long as they are not deleted. This means there are probably deleted data we missed that could have contributed to our insights. In addition, web-scraping only allows retrieval of user-facing data: tweet text, number of favorites, number of retweets, geotag, and permalink. No metadata is available using this method. 
+                    </p><p>
+Our end analysis is severely limited due to the nature of the tweets associated with this topic. Tweets are predominantly simplified and fragmented texts (like using hashtags and links), sometimes paired with images and accompanying captions that may not always be descriptive of the image. As such, our text and sentiment analysis is limited by the lack of descriptive text. This is seen in the above sentiment analysis, with the majority of tweets having neutral sentiment. Attempting to perform image analysis is difficult for machines and requires a vast amount of training for any image recognition model.
+</p><p>
+Another end analysis limitation is our biases towards the keywords we have chosen to link with Glossier and to analyze. Perhaps the words we have chosen are not as impactful as we believe for them to be, and perhaps there are other variations that might yield more effective findings. Related to this limitation are the text variations in keyword spelling, nicknames, and spacing, which were not comprehensive, as we did not take into account misspellings and foreign languages. If we had taken into account other languages other than English, the results would be even more accurate and likely different.
+                    </p><p>
+An overarching (and one that we perceive to be the greatest reason) limitation is our lack of access to the Instagram API, which is Glossier's main social media outlet. By limiting our API access to Twitter, we miss out on the visual-based, content-rich space of Instagram, where the company's main marketing takes place and where follower engagement is at its peak.
+                    </p><p>
+One possible ethical issue we encountered in our research is our inclusion of sample tweeted text under section "Text Analysis." Although we did not provide any other key value, like screenname, geotag, or timestamp, the specific tweet might still be identified if an individual were to use the text we posted in the search bar on Twitter. 
 </p><hr>
-                    </div>
-                        <div class="two columns"></div>
-                </div>
-                <a class="next-link" href="pgs/methods.html">Methods →</a>
-                <a class="previous-link" href="index.html">← Title</a><br>
-			</div>
-			<script src="js/imagesloaded.pkgd.min.js"></script>
-			<script src="js/charming.min.js"></script>
-			<script src="js/anime.min.js"></script>
-			<script src="js/demo1.js"></script>
-		</main>
+            </div>
+            <div class="two columns"></div>
+            </div>
+            <a class="next-link" href="conclusions.html">Conclusions →</a>
+            <a class="previous-link" href="visualizations.html">← Visualizations</a><br>
+        </div>
 	</body>
 </html>
